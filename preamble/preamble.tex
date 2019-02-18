@@ -1,0 +1,155 @@
+\usepackage[utf8]{inputenc}
+
+% use packages - sort of like include from C++ or import from python
+% Some of them are automatic others just add new commands
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{lastpage}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{textcomp}
+\RequirePackage[title,titletoc]{appendix}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={PDF Title}, % put here the pdf title (different thing than document title)
+    bookmarks=true,
+    pdfpagemode=FullScreen,
+    pdfauthor=%Put here your name
+}
+ 
+% Put all your images in the imagesw directory and treat that as a base path
+\graphicspath{ {./images/} }
+
+% set paper size and margins, right is smaller cause it seems like it is adding some margin to that
+\geometry{
+  a4paper,
+  left=40mm,
+  right=30mm,
+  top=40mm,
+  bottom=40mm
+}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{Header title} % Put here what you want to see in the header of all pages
+
+\fancypagestyle{empty}{
+ \fancyhf{}
+ \fancyhead[C]{Header title} % same thing again, it's beacause of different page types for title pages and stuff
+}
+
+\fancypagestyle{plain}{}
+
+
+% just adds the "Page 2 of 20" on the bottom
+\rfoot{Page \thepage \hspace{1pt} of \pageref*{LastPage}}
+
+
+
+% Fill that, title and author are obvious, date is automaticaly set to compilation date
+\title{Document title}
+\author{Author}
+\date{\today}
+
+
+% Change the titles of those sections to better ones than defaults
+\renewcommand{\contentsname}{Table of contents}
+\renewcommand{\listfigurename}{List of figures}
+\renewcommand{\listtablename}{List of tables}
+
+% For table word wrapping
+\emergencystretch=1em
+
+
+
+% All the stuff below are for code formatting, keep it if oyu want, delete if not
+% There are two styles defined here: 
+% python - nice syntax highliting and none - white text on dark background
+% to change the style use command \lstset{style=styleYouWant}, by default it's none
+
+\newcommand{\hit}[1]{\textbf{\textcolor{ForestGreen}{#1}}}
+\newcommand{\miss}[1]{\textbf{\textcolor{Red}{#1}}}
+
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{bg}{rgb}{0.25,0.25,0.25}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{python}{ 
+  backgroundcolor=\color{bg},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize\color{white},        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                   % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{orange},       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{ForestGreen},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  identifierstyle=\color{white}
+}
+
+\lstdefinestyle{none}{ 
+  backgroundcolor=\color{bg},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize\color{white},        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{white},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                   % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{white},       % keyword style
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{white},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  identifierstyle=\color{white},
+  language=C
+}
+
+\lstset{style=none}
